@@ -15,7 +15,7 @@ public class MyFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String date = new Date().toString();
         String adds = servletRequest.getRemoteAddr();
-        System.out.println(date + " id:" + adds);
+        System.out.println(date + "id:" + adds);
         filterChain.doFilter(servletRequest,servletResponse);
     }
 
