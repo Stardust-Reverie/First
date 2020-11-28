@@ -91,6 +91,23 @@ public class StudentDao {
         return rows;
     }
 
+    public static int updataStudent(Student student){
+
+        Connection connection = DBUtil.getConnection();
+        String sql = "update student set stu_name = ? where stu_num = ?";
+        int rows = 0;
+        try {
+            PreparedStatement statement = connection.prepareCall(sql);
+            statement.setString(1, student.getStuName());
+            statement.setString(2, student.getStuNum());
+            rows = statement.executeUpdate();
+            DBUtil.close(null, statement, connection);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return rows;
+    }
+
     public static void main(String[] args) throws SQLException {
         Student student = getStuById("1877000032");
         System.out.println(student);

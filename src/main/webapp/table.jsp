@@ -58,7 +58,7 @@
                     content: 'detail.jsp', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
                     success: function(layero, index){
                         console.log(layero, index);
-                        const body = layero.getChildFrame('body', index);
+                        const body = layer.getChildFrame('body', index);
                         body.find('#stu_num').val(data.stuNum);
                         body.find('#stu_name').val(data.stuName);
                     }
@@ -93,7 +93,18 @@
                 });
             } else if(layEvent === 'edit'){ //编辑
                 //do something
-
+                layer.open({
+                    type: 2 ,
+                    area: ["700px","500px"],
+                    content: 'edit.jsp', //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+                    success: function(layero, index){
+                        console.log(layero, index);
+                        const body = layer.getChildFrame('body', index);
+                        body.find('#stu_num').val(data.stuNum);
+                        body.find('#stu_name').val(data.stuName);
+                    }
+                    //数据绑定
+                });
                 //同步更新缓存对应的值
                 obj.update({
                     username: '123'
